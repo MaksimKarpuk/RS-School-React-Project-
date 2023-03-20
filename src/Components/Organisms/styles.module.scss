@@ -1,0 +1,24 @@
+@import '../../index.scss';
+
+.header {
+  background-color: $header;
+  .header__container {
+    @include container;
+    height: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .container__links {
+      display: flex;
+      gap: 1rem;
+      color: $white;
+    }
+    .container__search_bar {
+      background-color: none;
+      input {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+      }
+    }
+  }
+}

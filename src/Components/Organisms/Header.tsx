@@ -1,54 +1,44 @@
 import * as React from 'react';
-import { Component, ReactNode } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from '@mui/material';
-import SearchBar from '../Atoms/SearchBar';
+import { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import Input from '../Atoms/Input/Input';
+import style from './styles.module.scss';
 
-const HeaderLinks = [
+const HeaderLinks: IMenuValue[] = [
   { id: 1, title: 'Main', path: '/' },
   { id: 2, title: 'About', path: '/about' },
+  { id: 3, title: 'Form', path: '/form' },
 ];
-
-class Header extends Component {
-  render(): ReactNode {
+interface IMenuValue {
+  id: number;
+  title: string;
+  path: string;
+}
+interface IProps {
+  searchValue: string;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+class Header extends Component<IProps> {
+  render() {
     return (
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-            >
-              MUI
-            </Typography>
-            {HeaderLinks.map((item) => (
-              <NavLink to={item.path}>
-                <Link color="inherit" underline="none" key={item.id}>
-                  {item.title}
-                </Link>
+      <div className={style.header}>
+        <div className={style.header__container}>
+          <div className={style.container__links}>
+            {HeaderLinks.map((item: IMenuValue) => (
+              <NavLink to={item.path} key={item.id}>
+                <div>{item.title}</div>
               </NavLink>
             ))}
-            <SearchBar />
-          </Toolbar>
-        </AppBar>
-      </Box>
+          </div>
+          <div className={style.container__search_bar}>
+            <Input
+              placeholder="Search..."
+              searchValue={this.props.searchValue}
+              handleChange={this.props.handleChange}
+            />
+          </div>
+        </div>
+      </div>
     );
   }
 }

@@ -1,8 +1,16 @@
 import { Component, ReactNode } from 'react';
+import Cards from '../Molecules/Cards/Cards';
 
-class MainPage extends Component {
+interface IProps {
+  searchValue: string;
+}
+class MainPage extends Component<IProps> {
   render(): ReactNode {
-    return <div>MainPage</div>;
+    return (
+      <div>
+        <Cards searchValue={this.props.searchValue} />
+      </div>
+    );
   }
 }
 
