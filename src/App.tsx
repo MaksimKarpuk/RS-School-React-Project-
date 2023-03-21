@@ -5,7 +5,7 @@ import MainPage from './Components/Pages/Main';
 import AboutPage from './Components/Pages/About';
 import FormPage from './Components/Pages/Form';
 import ErrorPage from './Components/Pages/Error';
-import Header from './Components/Organisms/Header';
+import Header from './Components/Organisms/Header/Header';
 import './App.scss';
 
 interface IState {

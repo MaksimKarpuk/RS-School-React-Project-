@@ -1,7 +1,11 @@
 import { Component } from 'react';
-import Card from '../../Atoms/Card/Card';
-import style from './styles.module.scss';
-import image from '../../../assets/images/4.jpg';
+import CardsView from './CardsView';
+import image1 from '../../../assets/images/1.jpg';
+import image2 from '../../../assets/images/2.jpg';
+import image3 from '../../../assets/images/3.jpg';
+import image4 from '../../../assets/images/4.jpg';
+import image5 from '../../../assets/images/5.jpg';
+import image6 from '../../../assets/images/6.jpg';
 
 interface ICardInfoItem {
   id: number;
@@ -9,18 +13,17 @@ interface ICardInfoItem {
   subtitle: string;
   src: string;
 }
-
 interface IProps {
   searchValue: string;
 }
 
 const CardsInfo: ICardInfoItem[] = [
-  { id: 1, title: 'Title 1', subtitle: 'Subtitle 1', src: image },
-  { id: 2, title: 'Title 2', subtitle: 'Subtitle 2', src: image },
-  { id: 3, title: 'Title 3', subtitle: 'Subtitle 3', src: image },
-  { id: 4, title: 'Title 4', subtitle: 'Subtitle 4', src: image },
-  { id: 5, title: 'Title 5', subtitle: 'Subtitle 5', src: image },
-  { id: 6, title: 'Title 6', subtitle: 'Subtitle 6', src: image },
+  { id: 1, title: 'Home', subtitle: '24-02-22', src: image1 },
+  { id: 2, title: 'Nature', subtitle: '02-03-19', src: image2 },
+  { id: 3, title: 'Bike', subtitle: '22-02-23', src: image3 },
+  { id: 4, title: 'Road', subtitle: '01-06-20', src: image4 },
+  { id: 5, title: 'Tokyo', subtitle: '05-07-21', src: image5 },
+  { id: 6, title: 'Dog', subtitle: '05-09-18', src: image6 },
 ];
 
 class Cards extends Component<IProps, unknown> {
@@ -36,13 +39,7 @@ class Cards extends Component<IProps, unknown> {
   };
 
   render() {
-    return (
-      <div className={style.cards}>
-        {this.getCards().map((item) => (
-          <Card title={item.title} subtitle={item.subtitle} src={item.src} key={item.id} />
-        ))}
-      </div>
-    );
+    return <CardsView getCards={this.getCards} />;
   }
 }
 export default Cards;

@@ -4,7 +4,7 @@ import Cards from '../Molecules/Cards/Cards';
 interface IProps {
   searchValue: string;
 }
-class MainPage extends Component<IProps> {
+class MainPage extends Component<IProps, unknown> {
   render(): ReactNode {
     return (
       <div>
