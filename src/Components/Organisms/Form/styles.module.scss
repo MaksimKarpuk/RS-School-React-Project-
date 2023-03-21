@@ -3,5 +3,8 @@
 .form {
   background-color: aquamarine;
   height: 100vh;
-  padding: 3rem;
+  padding: 3rem 0;
+  .form__container {
+    @include container;
+  }
 }

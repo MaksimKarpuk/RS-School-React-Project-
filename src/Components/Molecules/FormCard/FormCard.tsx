@@ -3,6 +3,7 @@ import { Component } from 'react';
 interface IProps {
   inputValue: string | undefined;
   inputDate: string | undefined;
+  selectValue: string | undefined;
   checkboxValue: boolean | undefined;
 }
 class FormCard extends Component<IProps> {
@@ -16,6 +17,7 @@ class FormCard extends Component<IProps> {
             ? ''
             : 'Permition was got'}
         </div>
+        <div>{this.props.selectValue}</div>
       </div>
     );
   }

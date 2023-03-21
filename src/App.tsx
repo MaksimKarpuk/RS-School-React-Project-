@@ -1,5 +1,4 @@
 import { Component, ReactNode } from 'react';
-import { Container } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
 import MainPage from './Components/Pages/MainPage';
 import AboutPage from './Components/Pages/AboutPage';
@@ -29,14 +28,12 @@ class App extends Component<unknown, IState> {
     return (
       <>
         <Header searchValue={this.state.searchValue} handleChange={this.handleChange} />
-        <Container>
-          <Routes>
-            <Route path="/" element={<MainPage searchValue={this.state.searchValue} />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/form" element={<FormPage />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </Container>
+        <Routes>
+          <Route path="/" element={<MainPage searchValue={this.state.searchValue} />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/form" element={<FormPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
       </>
     );
   }

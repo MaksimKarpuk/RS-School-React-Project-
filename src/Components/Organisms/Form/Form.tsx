@@ -7,6 +7,7 @@ interface IState {
   inputDate: string | undefined;
   checkboxValue: boolean | undefined;
   checked: boolean;
+  selectValue: string | undefined;
 }
 
 class Form extends Component<unknown, IState> {
@@ -16,12 +17,21 @@ class Form extends Component<unknown, IState> {
 
   checkboxField: React.RefObject<HTMLInputElement>;
 
+  selectField: React.RefObject<HTMLSelectElement>;
+
   constructor(props) {
     super(props);
     this.inputField = React.createRef();
     this.dateField = React.createRef();
     this.checkboxField = React.createRef();
-    this.state = { inputValue: '', inputDate: '', checked: false, checkboxValue: false };
+    this.selectField = React.createRef();
+    this.state = {
+      inputValue: '',
+      inputDate: '',
+      checked: false,
+      checkboxValue: false,
+      selectValue: '',
+    };
     this.setForm = this.setForm.bind(this);
   }
 
@@ -30,6 +40,7 @@ class Form extends Component<unknown, IState> {
     this.setState({ inputValue: this.inputField.current?.value });
     this.setState({ inputDate: this.dateField.current?.value });
     this.setState({ checkboxValue: this.checkboxField.current?.checked });
+    this.setState({ selectValue: this.selectField.current?.value });
     if (this.inputField.current?.value) {
       this.inputField.current.value = '';
     }
@@ -39,6 +50,9 @@ class Form extends Component<unknown, IState> {
     if (this.checkboxField.current?.checked) {
       this.checkboxField.current.checked = false;
     }
+    if (this.selectField.current?.value) {
+      this.selectField.current.value = '';
+    }
   }
 
   render() {
@@ -47,6 +61,8 @@ class Form extends Component<unknown, IState> {
         inputValue={this.state.inputValue}
         inputDate={this.state.inputDate}
         checkboxValue={this.state.checkboxValue}
+        selectValue={this.state.selectValue}
+        selectField={this.selectField}
         inputField={this.inputField}
         dateField={this.dateField}
         checkboxField={this.checkboxField}
