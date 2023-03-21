@@ -1,10 +1,10 @@
 import { Component, ReactNode } from 'react';
 import { Container } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
-import MainPage from './Components/Pages/Main';
-import AboutPage from './Components/Pages/About';
-import FormPage from './Components/Pages/Form';
-import ErrorPage from './Components/Pages/Error';
+import MainPage from './Components/Pages/MainPage';
+import AboutPage from './Components/Pages/AboutPage';
+import FormPage from './Components/Pages/FormPage';
+import ErrorPage from './Components/Pages/ErrorPage';
 import Header from './Components/Organisms/Header/Header';
 import './App.scss';
 

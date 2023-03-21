@@ -1,9 +1,10 @@
 import { Component } from 'react';
 
 interface IProps {
-  searchValue: string;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
+  inputField: React.RefObject<HTMLInputElement>;
 }
 class Input extends Component<IProps> {
   render() {
@@ -12,8 +13,9 @@ class Input extends Component<IProps> {
         <input
           type="text"
           placeholder={this.props.placeholder}
-          value={this.props.searchValue}
+          value={this.props.value}
           onChange={this.props.handleChange}
+          ref={this.props.inputField}
         />
       </div>
     );

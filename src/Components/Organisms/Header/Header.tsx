@@ -33,7 +33,7 @@ class Header extends Component<IProps, unknown> {
           <div className={style.container__search_bar}>
             <Input
               placeholder="Search..."
-              searchValue={this.props.searchValue}
+              value={this.props.searchValue}
               handleChange={this.props.handleChange}
             />
           </div>
