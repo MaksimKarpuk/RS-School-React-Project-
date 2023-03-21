@@ -1,18 +1,13 @@
 import { Component } from 'react';
 
 interface IProps {
-  value?: string;
+  dateField: React.RefObject<HTMLInputElement>;
 }
 class Date extends Component<IProps, unknown> {
   render() {
     return (
       <div>
-        <input
-          type="date"
-          // placeholder={this.props.placeholder}
-          value={this.props.value}
-          // onChange={this.props.handleChange}
-        />
+        <input type="date" ref={this.props.dateField} />
       </div>
     );
   }
