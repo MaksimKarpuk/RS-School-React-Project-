@@ -41,14 +41,10 @@ class FormView extends Component<IProps, unknown> {
         <form className={style.form}>
           <div className={style.form__container}>
             <div className={style.container__inputs}>
-              <div
-                className={
-                  !this.props.error ? style.container__input : style.container__input_error
-                }
-              >
+              <div className={style.container__input}>
                 <Input placeholder="Name" inputField={this.props.inputField} />
                 {this.props.error ? (
-                  <div className={style.input__error}>
+                  <div className={style.error}>
                     It is necessary to fill in the field with a capital letter
                   </div>
                 ) : null}
@@ -58,6 +54,9 @@ class FormView extends Component<IProps, unknown> {
               </div>
               <div className={style.container__select}>
                 <Select selectField={this.props.selectField} />
+                {this.props.error ? (
+                  <div className={style.error}>It is necessary to select location</div>
+                ) : null}
               </div>
               <div className={style.container__radio}>
                 <Radio radioField={this.props.radioFieldPhone} label="Male" />
@@ -68,6 +67,9 @@ class FormView extends Component<IProps, unknown> {
               </div>
               <div className={style.container__checkbox}>
                 <Checkbox checkboxField={this.props.checkboxField} />
+                {this.props.error ? (
+                  <div className={style.error}>It is necessary to confirm</div>
+                ) : null}
               </div>
               <button type="submit" onClick={this.props.setForm}>
                 Submit

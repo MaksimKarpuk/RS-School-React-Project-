@@ -1,5 +1,5 @@
 /* eslint-disable no-alert */
-/* eslint-disable react/no-unused-state */
+
 import * as React from 'react';
 import { Component } from 'react';
 import uuid from 'react-uuid';
@@ -62,12 +62,17 @@ class Form extends Component<unknown, IState> {
 
   setForm(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
-    this.inputField.current?.value &&
-    !!this.inputField.current?.value
-      .split('')[0]
-      .localeCompare(this.inputField.current?.value.split('')[0].toLowerCase())
-      ? this.submitForm()
-      : this.setState({ error: true });
+    !this.inputField.current?.value
+      ? this.setState({ error: true })
+      : !this.checkboxField.current?.checked
+      ? this.setState({ error: true })
+      : !this.selectField.current?.value
+      ? this.setState({ error: true })
+      : !this.inputField.current?.value
+          .split('')[0]
+          .localeCompare(this.inputField.current?.value.split('')[0].toLowerCase())
+      ? this.setState({ error: true })
+      : this.submitForm();
   }
 
   submitForm() {
@@ -76,10 +81,10 @@ class Form extends Component<unknown, IState> {
       inputDate: this.dateField.current?.value,
       checkboxValue: this.checkboxField.current?.checked,
       selectValue: this.selectField.current?.value,
-      radioValue: this.radioFieldEmail.current?.value,
       fileValue: this.fileField.current?.files![0],
       error: false,
     });
+
     this.radioFieldEmail.current?.checked
       ? this.setState({ radioValue: this.radioFieldEmail.current?.value })
       : this.radioFieldPhone.current?.checked
@@ -116,7 +121,10 @@ class Form extends Component<unknown, IState> {
     if (this.selectField.current?.value) {
       this.selectField.current.value = '';
     }
-    alert('The form was saved successfully');
+    if (this.fileField.current?.files![0]) {
+      this.fileField.current.files![0] = new File([''], '');
+    }
+    alert('The form has been saved successfully');
   }
 
   render() {
