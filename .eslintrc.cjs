@@ -49,6 +49,8 @@ module.exports = {
     'react/prefer-stateless-function': 'off',
     'react/destructuring-assignment': 'off',
     'react/sort-comp': 'off',
+    '@typescript-eslint/no-unused-expressions': 'off',
+    'no-nested-ternary': 'off',
   },
   settings: {
     react: {
