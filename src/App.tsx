@@ -1,6 +1,6 @@
 import { Component, ReactNode } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import MainPage from './Components/Pages/MainPage';
+import { Route, Routes, NavLink } from 'react-router-dom';
+import MainPage from './Components/Pages/MainPage/MainPage';
 import AboutPage from './Components/Pages/AboutPage';
 import FormPage from './Components/Pages/FormPage';
 import ErrorPage from './Components/Pages/ErrorPage';
@@ -26,15 +26,24 @@ class App extends Component<unknown, IState> {
 
   render(): ReactNode {
     return (
-      <>
+      <div className="app">
         <Header searchValue={this.state.searchValue} handleChange={this.handleChange} />
+        <NavLink to="/" data-testid="main-link">
+          Main
+        </NavLink>
+        <NavLink to="/about" data-testid="about-link">
+          About
+        </NavLink>
+        <NavLink to="/form" data-testid="form-link">
+          Form
+        </NavLink>
         <Routes>
           <Route path="/" element={<MainPage searchValue={this.state.searchValue} />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/form" element={<FormPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-      </>
+      </div>
     );
   }
 }

@@ -4,7 +4,7 @@ import Form from '../Organisms/Form/Form';
 class FormPage extends Component {
   render(): ReactNode {
     return (
-      <div>
+      <div data-testid="form-page">
         <Form />
       </div>
     );

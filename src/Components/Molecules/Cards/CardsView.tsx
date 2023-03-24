@@ -15,7 +15,7 @@ interface IProps {
 class CardsView extends Component<IProps, unknown> {
   render() {
     return (
-      <div className={style.cards}>
+      <div className={style.cards} data-testid="cards">
         {this.props.getCards().map((item) => (
           <Card title={item.title} subtitle={item.subtitle} src={item.src} key={item.id} />
         ))}
