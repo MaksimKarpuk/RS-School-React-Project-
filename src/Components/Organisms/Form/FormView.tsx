@@ -31,7 +31,9 @@ interface IProps {
   error: boolean;
   selectError: boolean;
   checkboxError: boolean;
-  CapitalLeterError: boolean;
+  dateError: boolean;
+  fileError: boolean;
+  radioError: boolean;
 }
 
 class FormView extends Component<IProps, unknown> {
@@ -46,27 +48,33 @@ class FormView extends Component<IProps, unknown> {
                 {this.props.error ? (
                   <div className={style.error}>It is necessary to fill</div>
                 ) : null}
-                {this.props.CapitalLeterError ? (
-                  <div className={style.error}>
-                    It is necessary to fill in the field with a capital letter
-                  </div>
-                ) : null}
               </div>
               <div className={style.container__date}>
                 <Date dateField={this.props.dateField} />
+                {this.props.dateError ? (
+                  <div className={style.error}>It is necessary to select</div>
+                ) : null}
               </div>
               <div className={style.container__select}>
                 <Select selectField={this.props.selectField} />
                 {this.props.selectError ? (
-                  <div className={style.error}>It is necessary to select location</div>
+                  <div className={style.error}>It is necessary to select</div>
                 ) : null}
               </div>
               <div className={style.container__radio}>
-                <Radio radioField={this.props.radioFieldPhone} label="Male" />
-                <Radio radioField={this.props.radioFieldEmail} label="Fimale" />
+                <div className={style.radio__btns}>
+                  <Radio radioField={this.props.radioFieldPhone} label="Male" />
+                  <Radio radioField={this.props.radioFieldEmail} label="Fimale" />
+                </div>
+                {this.props.radioError ? (
+                  <div className={style.error}>It is necessary to select</div>
+                ) : null}
               </div>
               <div className={style.container__file}>
                 <File fileField={this.props.fileField} label="Add your photo" />
+                {this.props.fileError ? (
+                  <div className={style.error}>It is necessary to fill</div>
+                ) : null}
               </div>
               <div className={style.container__checkbox}>
                 <Checkbox checkboxField={this.props.checkboxField} />

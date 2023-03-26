@@ -43,8 +43,10 @@
         }
       }
       .container__radio {
-        display: flex;
-        gap: 0.5rem;
+        .radio__btns {
+          display: flex;
+          gap: 0.5rem;
+        }
       }
       .container__file {
         display: flex;

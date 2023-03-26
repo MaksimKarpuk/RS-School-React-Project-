@@ -20,7 +20,9 @@ interface IState {
   error: boolean;
   selectError: boolean;
   checkboxError: boolean;
-  CapitalLeterError: boolean;
+  dateError: boolean;
+  fileError: boolean;
+  radioError: boolean;
 }
 
 class Form extends Component<unknown, IState> {
@@ -51,7 +53,9 @@ class Form extends Component<unknown, IState> {
       error: false,
       selectError: false,
       checkboxError: false,
-      CapitalLeterError: false,
+      dateError: false,
+      fileError: false,
+      radioError: false,
       cards: [],
     };
     this.setForm = this.setForm.bind(this);
@@ -75,10 +79,28 @@ class Form extends Component<unknown, IState> {
     } else {
       this.setState({ checkboxError: false });
     }
+    if (!this.dateField.current?.value) {
+      this.setState({ dateError: true });
+    } else {
+      this.setState({ dateError: false });
+    }
+    if (!this.fileField.current?.files![0]) {
+      this.setState({ fileError: true });
+    } else {
+      this.setState({ fileError: false });
+    }
+    if (!this.radioFieldEmail.current?.checked && !this.radioFieldPhone.current?.checked) {
+      this.setState({ radioError: true });
+    } else {
+      this.setState({ radioError: false });
+    }
     if (
       this.inputField.current?.value &&
       this.selectField.current?.value &&
-      this.checkboxField.current?.checked
+      this.checkboxField.current?.checked &&
+      this.dateField.current?.value &&
+      this.fileField.current?.files![0] &&
+      (this.radioFieldEmail.current?.checked || this.radioFieldPhone.current?.checked)
     ) {
       this.submitForm();
     }
@@ -123,10 +145,14 @@ class Form extends Component<unknown, IState> {
     if (this.selectField.current?.value) {
       this.selectField.current.value = '';
     }
-    // if (this.fileField.current?.files![0]) {
-    //   this.fileField.current.files![0] = ;
-    // }
-    this.setState({ error: false, checkboxError: false, selectError: false });
+    this.setState({
+      error: false,
+      checkboxError: false,
+      selectError: false,
+      dateError: false,
+      fileError: false,
+      radioError: false,
+    });
     alert('The form has been saved successfully');
   }
 
@@ -153,7 +179,9 @@ class Form extends Component<unknown, IState> {
           error={this.state.error}
           selectError={this.state.selectError}
           checkboxError={this.state.checkboxError}
-          CapitalLeterError={this.state.CapitalLeterError}
+          dateError={this.state.dateError}
+          fileError={this.state.fileError}
+          radioError={this.state.radioError}
         />
       </div>
     );

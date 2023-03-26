@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">41.02% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/39</span>
+                <span class='fraction'>16/39</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">41.02% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/39</span>
+                <span class='fraction'>16/39</span>
             </div>
         
             
@@ -102,7 +102,20 @@
 <a name='L37'></a><a href='#L37'>37</a>
 <a name='L38'></a><a href='#L38'>38</a>
 <a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -126,41 +139,28 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >/* eslint-disable jsx-a11y/alt-text */</span></span></span>
-<span class="cstat-no" title="statement not covered" >import { Component } from 'react';</span>
-<span class="cstat-no" title="statement not covered" >import style from './styles.module.scss';</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >interface IProps {</span>
-<span class="cstat-no" title="statement not covered" >  inputValue: string | undefined;</span>
-<span class="cstat-no" title="statement not covered" >  inputDate: string | undefined;</span>
-<span class="cstat-no" title="statement not covered" >  selectValue: string | undefined;</span>
-<span class="cstat-no" title="statement not covered" >  radioValue: string | undefined;</span>
-<span class="cstat-no" title="statement not covered" >  fileValue: File | Blob | MediaSource;</span>
-<span class="cstat-no" title="statement not covered" >  checkboxValue: boolean | undefined;</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-<span class="cstat-no" title="statement not covered" >class FormCard extends Component&lt;IProps&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  render() {</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable jsx-a11y/alt-text */
+import { Component } from 'react';
+import style from './styles.module.scss';
+&nbsp;
+interface IProps {
+  inputValue: string | undefined;
+  inputDate: string | undefined;
+  selectValue: string | undefined;
+  radioValue: string | undefined;
+  fileValue: File | Blob;
+  checkboxValue: boolean | undefined;
+}
+class FormCard extends Component&lt;IProps&gt; {
+<span class="fstat-no" title="function not covered" >  render() {</span>
 <span class="cstat-no" title="statement not covered" >    return (</span>
 <span class="cstat-no" title="statement not covered" >      &lt;div className={style.form_card}&gt;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;div className={style.form_card__container}&gt;</span>
 <span class="cstat-no" title="statement not covered" >          &lt;div className={style.container__card}&gt;</span>
 <span class="cstat-no" title="statement not covered" >            &lt;div className={style.card__image}&gt;</span>
-<span class="cstat-no" title="statement not covered" >              &lt;img src={URL.createObjectURL(this.props.fileValue)} /&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;img src={URL.createObjectURL(new Blob([this.props.fileValue]))} /&gt;</span>
 <span class="cstat-no" title="statement not covered" >            &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >            &lt;div className={style.card__info}&gt;</span>
 <span class="cstat-no" title="statement not covered" >              &lt;div className={style.info__name}&gt;Name: {this.props.inputValue}&lt;/div&gt;</span>
@@ -178,8 +178,8 @@
 <span class="cstat-no" title="statement not covered" >      &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >    );</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-<span class="cstat-no" title="statement not covered" >export default FormCard;</span>
+}
+export default FormCard;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -187,7 +187,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-24T10:13:50.444Z
+                at 2023-03-26T14:02:40.749Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

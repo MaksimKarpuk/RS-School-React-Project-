@@ -28,7 +28,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks'],
-  ignorePatterns: ['setupTests.ts'],
+  ignorePatterns: ['setupTests.ts', 'prettify.js', 'sorter.js', 'block-navigation.js'],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
