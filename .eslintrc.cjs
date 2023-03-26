@@ -28,6 +28,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks'],
+  ignorePatterns: ['setupTests.ts', 'prettify.js', 'sorter.js', 'block-navigation.js'],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
@@ -45,6 +46,11 @@ module.exports = {
     '@typescript-eslint/no-var-reqiures': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react/prefer-stateless-function': 'off',
+    'react/destructuring-assignment': 'off',
+    'react/sort-comp': 'off',
+    '@typescript-eslint/no-unused-expressions': 'off',
+    'no-nested-ternary': 'off',
   },
   settings: {
     react: {

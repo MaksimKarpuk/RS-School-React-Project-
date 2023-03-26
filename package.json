@@ -6,25 +6,38 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint ./",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.13",
+    "@redux-devtools/core": "^3.13.1",
+    "@reduxjs/toolkit": "^1.9.3",
+    "@types/react-router": "^5.1.20",
+    "@vitejs/plugin-react": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.9.0"
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.9.0",
+    "react-uuid": "^2.0.0",
+    "redux": "^4.2.1",
+    "vite": "^4.2.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@types/react-slick": "^0.23.10",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",
-    "@vitejs/plugin-react": "^3.1.0",
+    "@vitest/coverage-c8": "^0.29.7",
     "css-loader": "^6.7.3",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -43,7 +56,6 @@
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.2",
     "typescript": "^4.9.3",
-    "vite": "^4.2.0",
     "vitest": "^0.29.3"
   }
 }
