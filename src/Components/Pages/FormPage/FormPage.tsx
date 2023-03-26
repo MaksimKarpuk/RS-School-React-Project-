@@ -1,5 +1,5 @@
 import { Component, ReactNode } from 'react';
-import Form from '../Organisms/Form/Form';
+import Form from '../../Organisms/Form/Form';
 
 class FormPage extends Component {
   render(): ReactNode {

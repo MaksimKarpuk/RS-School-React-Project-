@@ -5,21 +5,22 @@ import { Component } from 'react';
 import uuid from 'react-uuid';
 import FormView from './FormView';
 
-interface ICards {
-  id: string;
-  value: IValue;
-}
 interface IValue {
+  id: string;
   inputValue: string | undefined;
   inputDate: string | undefined;
   checkboxValue: boolean | undefined;
   selectValue: string | undefined;
   radioValue: string | undefined;
-  fileValue: File | Blob | MediaSource | undefined;
+  fileValue: File | Blob | undefined;
 }
-interface IState extends IValue {
-  cards: ICards[];
+
+interface IState {
+  cards: IValue[];
   error: boolean;
+  selectError: boolean;
+  checkboxError: boolean;
+  CapitalLeterError: boolean;
 }
 
 class Form extends Component<unknown, IState> {
@@ -47,14 +48,11 @@ class Form extends Component<unknown, IState> {
     this.radioFieldPhone = React.createRef();
     this.radioFieldEmail = React.createRef();
     this.state = {
-      inputValue: '',
-      inputDate: '',
-      checkboxValue: false,
-      selectValue: '',
-      radioValue: '',
-      fileValue: new File([''], ''),
-      cards: [],
       error: false,
+      selectError: false,
+      checkboxError: false,
+      CapitalLeterError: false,
+      cards: [],
     };
     this.setForm = this.setForm.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -62,47 +60,51 @@ class Form extends Component<unknown, IState> {
 
   setForm(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
-    !this.inputField.current?.value
-      ? this.setState({ error: true })
-      : !this.checkboxField.current?.checked
-      ? this.setState({ error: true })
-      : !this.selectField.current?.value
-      ? this.setState({ error: true })
-      : !this.inputField.current?.value
-          .split('')[0]
-          .localeCompare(this.inputField.current?.value.split('')[0].toLowerCase())
-      ? this.setState({ error: true })
-      : this.submitForm();
+    if (!this.inputField.current?.value) {
+      this.setState({ error: true });
+    } else {
+      this.setState({ error: false });
+    }
+    if (!this.selectField.current?.value) {
+      this.setState({ selectError: true });
+    } else {
+      this.setState({ selectError: false });
+    }
+    if (!this.checkboxField.current?.checked) {
+      this.setState({ checkboxError: true });
+    } else {
+      this.setState({ checkboxError: false });
+    }
+    if (
+      this.inputField.current?.value &&
+      this.selectField.current?.value &&
+      this.checkboxField.current?.checked
+    ) {
+      this.submitForm();
+    }
   }
 
   submitForm() {
-    this.setState({
+    const values = {
+      id: uuid(),
       inputValue: this.inputField.current?.value,
       inputDate: this.dateField.current?.value,
       checkboxValue: this.checkboxField.current?.checked,
       selectValue: this.selectField.current?.value,
       fileValue: this.fileField.current?.files![0],
-      error: false,
-    });
-
-    this.radioFieldEmail.current?.checked
-      ? this.setState({ radioValue: this.radioFieldEmail.current?.value })
-      : this.radioFieldPhone.current?.checked
-      ? this.setState({ radioValue: this.radioFieldPhone.current?.value })
-      : this.setState({ radioValue: '' });
-
-    this.state.cards.push({
-      id: uuid(),
-      value: {
-        inputValue: this.state.inputValue,
-        inputDate: this.state.inputDate,
-        checkboxValue: this.state.checkboxValue,
-        selectValue: this.state.selectValue,
-        radioValue: this.state.radioValue,
-        fileValue: this.state.fileValue,
-      },
-    });
-    localStorage.setItem('cards', JSON.stringify(this.state.cards));
+      radioValue: this.radioFieldEmail.current?.value,
+    };
+    if (this.radioFieldEmail.current?.checked) {
+      values.radioValue = this.radioFieldEmail.current?.value;
+    } else if (this.radioFieldPhone.current?.checked) {
+      values.radioValue = this.radioFieldPhone.current?.value;
+    } else {
+      values.radioValue = '';
+    }
+    const state = { ...this.state };
+    state.cards.push(values);
+    this.setState(state);
+    localStorage.setItem('cards', JSON.stringify(state.cards));
     if (this.inputField.current?.value) {
       this.inputField.current.value = '';
     }
@@ -121,10 +123,18 @@ class Form extends Component<unknown, IState> {
     if (this.selectField.current?.value) {
       this.selectField.current.value = '';
     }
-    if (this.fileField.current?.files![0]) {
-      this.fileField.current.files![0] = new File([''], '');
-    }
+    // if (this.fileField.current?.files![0]) {
+    //   this.fileField.current.files![0] = ;
+    // }
+    this.setState({ error: false, checkboxError: false, selectError: false });
     alert('The form has been saved successfully');
+  }
+
+  componentDidMount(): void {
+    const initialCards = localStorage.getItem('cards');
+    if (initialCards) {
+      this.setState({ cards: JSON.parse(initialCards) });
+    }
   }
 
   render() {
@@ -141,6 +151,9 @@ class Form extends Component<unknown, IState> {
           setForm={this.setForm}
           cards={this.state.cards}
           error={this.state.error}
+          selectError={this.state.selectError}
+          checkboxError={this.state.checkboxError}
+          CapitalLeterError={this.state.CapitalLeterError}
         />
       </div>
     );

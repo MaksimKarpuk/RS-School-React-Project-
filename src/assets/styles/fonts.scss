@@ -21,3 +21,10 @@
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
+@mixin H32() {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 2.5rem;
+}

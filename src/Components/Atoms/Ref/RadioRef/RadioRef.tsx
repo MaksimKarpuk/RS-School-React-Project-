@@ -14,6 +14,7 @@ class RadioRef extends Component<IProps> {
           ref={this.props.radioField}
           name="radio"
           value={this.props.label}
+          data-testid="radio"
         />
         <label htmlFor="radioRef">{this.props.label}</label>
       </>

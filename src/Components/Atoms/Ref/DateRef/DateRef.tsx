@@ -9,7 +9,7 @@ class Date extends Component<IProps, unknown> {
     return (
       <>
         <label htmlFor="dateFile"> Сhoose your date of birth</label>
-        <input type="date" id="dateFile" ref={this.props.dateField} />
+        <input type="date" id="dateFile" ref={this.props.dateField} data-testid="date" />
       </>
     );
   }

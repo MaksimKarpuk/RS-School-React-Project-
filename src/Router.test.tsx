@@ -4,9 +4,9 @@ import { expect } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 
-describe('app', () => {
+describe('routes', () => {
   afterEach(cleanup);
-  it('routes', () => {
+  it('correct routes', () => {
     render(
       <MemoryRouter>
         <App />
@@ -24,5 +24,14 @@ describe('app', () => {
     waitFor(() => expect(aboutPage).toBeInTheDocument());
     userEvent.click(formLink);
     waitFor(() => expect(formPage).toBeInTheDocument());
+  });
+  it('error routes', () => {
+    render(
+      <MemoryRouter initialEntries={['/ololo']}>
+        <App />
+      </MemoryRouter>
+    );
+    const errorPage = screen.queryByTestId('error-page');
+    waitFor(() => expect(errorPage).toBeInTheDocument());
   });
 });

@@ -25,11 +25,11 @@ class Header extends Component<IProps, unknown> {
       <div className={style.header}>
         <div className={style.header__container}>
           <div className={style.container__links}>
-            {/* {headerLinks.map((item: IMenuValue) => (
+            {headerLinks.map((item: IMenuValue) => (
               <NavLink to={item.path} key={item.id} data-testid={item.dataTestid}>
                 <div>{item.title}</div>
               </NavLink>
-            ))} */}
+            ))}
           </div>
           <div className={style.container__search_bar}>
             <Input

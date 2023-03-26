@@ -9,17 +9,14 @@ import Select from '../../Atoms/Ref/SelectRef/SelectRef';
 import File from '../../Atoms/Ref/FileRef/FileRef';
 import style from './styles.module.scss';
 
-interface ICards {
-  id: string;
-  value: IValue;
-}
 interface IValue {
+  id: string;
   inputValue: string | undefined;
   inputDate: string | undefined;
   checkboxValue: boolean | undefined;
   selectValue: string | undefined;
   radioValue: string | undefined;
-  fileValue: File | Blob | MediaSource | undefined;
+  fileValue: File | Blob | undefined;
 }
 interface IProps {
   inputField: React.RefObject<HTMLInputElement>;
@@ -30,8 +27,11 @@ interface IProps {
   selectField: React.RefObject<HTMLSelectElement>;
   fileField: React.RefObject<HTMLInputElement>;
   setForm: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  cards: ICards[];
+  cards: IValue[];
   error: boolean;
+  selectError: boolean;
+  checkboxError: boolean;
+  CapitalLeterError: boolean;
 }
 
 class FormView extends Component<IProps, unknown> {
@@ -44,6 +44,9 @@ class FormView extends Component<IProps, unknown> {
               <div className={style.container__input}>
                 <Input placeholder="Name" inputField={this.props.inputField} />
                 {this.props.error ? (
+                  <div className={style.error}>It is necessary to fill</div>
+                ) : null}
+                {this.props.CapitalLeterError ? (
                   <div className={style.error}>
                     It is necessary to fill in the field with a capital letter
                   </div>
@@ -54,7 +57,7 @@ class FormView extends Component<IProps, unknown> {
               </div>
               <div className={style.container__select}>
                 <Select selectField={this.props.selectField} />
-                {this.props.error ? (
+                {this.props.selectError ? (
                   <div className={style.error}>It is necessary to select location</div>
                 ) : null}
               </div>
@@ -67,11 +70,11 @@ class FormView extends Component<IProps, unknown> {
               </div>
               <div className={style.container__checkbox}>
                 <Checkbox checkboxField={this.props.checkboxField} />
-                {this.props.error ? (
+                {this.props.checkboxError ? (
                   <div className={style.error}>It is necessary to confirm</div>
                 ) : null}
               </div>
-              <button type="submit" onClick={this.props.setForm}>
+              <button type="submit" onClick={this.props.setForm} data-testid="button">
                 Submit
               </button>
             </div>
@@ -81,12 +84,12 @@ class FormView extends Component<IProps, unknown> {
           {this.props.cards.map((item) => (
             <FormCard
               key={item.id}
-              inputValue={item.value.inputValue}
-              inputDate={item.value.inputDate}
-              checkboxValue={item.value.checkboxValue}
-              radioValue={item.value.radioValue}
-              selectValue={item.value.selectValue}
-              fileValue={item.value.fileValue}
+              inputValue={item.inputValue}
+              inputDate={item.inputDate}
+              checkboxValue={item.checkboxValue}
+              radioValue={item.radioValue}
+              selectValue={item.selectValue}
+              fileValue={item.fileValue}
             />
           ))}
         </div>

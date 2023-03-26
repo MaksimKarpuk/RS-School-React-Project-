@@ -7,7 +7,7 @@ interface IProps {
   inputDate: string | undefined;
   selectValue: string | undefined;
   radioValue: string | undefined;
-  fileValue: File | Blob | MediaSource;
+  fileValue: File | Blob;
   checkboxValue: boolean | undefined;
 }
 class FormCard extends Component<IProps> {
@@ -17,7 +17,7 @@ class FormCard extends Component<IProps> {
         <div className={style.form_card__container}>
           <div className={style.container__card}>
             <div className={style.card__image}>
-              <img src={URL.createObjectURL(this.props.fileValue)} />
+              <img src={URL.createObjectURL(new Blob([this.props.fileValue]))} />
             </div>
             <div className={style.card__info}>
               <div className={style.info__name}>Name: {this.props.inputValue}</div>

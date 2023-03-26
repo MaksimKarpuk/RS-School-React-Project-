@@ -18,7 +18,7 @@ const setup = () => {
 
 test('Render component', () => {
   const { input } = setup();
-  fireEvent.change(input, { target: { value: '$23' } });
+  fireEvent.change(input, { target: { value: 'Hello' } });
   expect(input).toBeInTheDocument();
-  expect(input.value).toBe('$23');
+  expect(input.value).toBe('Hello');
 });

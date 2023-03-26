@@ -8,7 +8,12 @@ class CheckboxRef extends Component<IProps> {
   render() {
     return (
       <>
-        <input type="checkbox" id="checkboxRef" ref={this.props.checkboxField} />
+        <input
+          type="checkbox"
+          id="checkboxRef"
+          ref={this.props.checkboxField}
+          data-testid="checkbox"
+        />
         <label htmlFor="checkboxRef">I consent to my personal data</label>
       </>
     );

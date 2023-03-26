@@ -13,9 +13,9 @@
     "strict": true,
     "skipLibCheck": true,
     "baseUrl": "./src",
-    "resolveJsonModule": true,
-    
+    "resolveJsonModule": true
   },
   "include": [".eslintrc.cjs", "vite.config.ts", "src", "./src/**/*", "styled.d.ts"],
+  
   "references": [{ "path": "./tsconfig.node.json" }]
 }

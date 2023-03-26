@@ -8,7 +8,7 @@ class SelectRef extends Component<IProps> {
     return (
       <label htmlFor="selectRef">
         Choose location
-        <select name="selectRef" id="selectRef" ref={this.props.selectField}>
+        <select name="selectRef" id="selectRef" ref={this.props.selectField}  data-testid="select">
           <option value="">Select one</option>
           <option value="Minsk">Minsk</option>
           <option value="Brest">Brest</option>
