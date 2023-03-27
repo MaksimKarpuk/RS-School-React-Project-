@@ -1,17 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { Component } from 'react';
+import { FC } from 'react';
 
 interface IProps {
-  dateField: React.RefObject<HTMLInputElement>;
+  dateField: React.MutableRefObject<HTMLInputElement | undefined>;
 }
-class Date extends Component<IProps, unknown> {
-  render() {
-    return (
-      <>
-        <label htmlFor="dateFile"> Сhoose your date of birth</label>
-        <input type="date" id="dateFile" ref={this.props.dateField} data-testid="date" />
-      </>
-    );
-  }
-}
+const Date: FC<IProps> = (props) => {
+  return (
+    <>
+      <label htmlFor="dateFile"> Choose your date of birth</label>
+      <input type="date" ref={props.dateField} id="dateFile" data-testid="date" />
+    </>
+  );
+};
+
 export default Date;

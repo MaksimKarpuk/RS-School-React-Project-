@@ -1,17 +1,16 @@
-import { Component } from 'react';
+import { FC } from 'react';
 
 interface IProps {
-  fileField: React.RefObject<HTMLInputElement>;
+  fileField: React.MutableRefObject<HTMLInputElement | undefined>;
   label: string;
 }
-class FileRef extends Component<IProps> {
-  render() {
-    return (
-      <>
-        <label htmlFor="fileRef">{this.props.label}</label>
-        <input type="file" id="fileRef" ref={this.props.fileField} accept="image/*" />
-      </>
-    );
-  }
-}
+const FileRef: FC<IProps> = (props) => {
+  return (
+    <>
+      <label htmlFor="fileRef">{props.label}</label>
+      <input type="file" id="fileRef" ref={props.fileField} accept="image/*" />
+    </>
+  );
+};
+
 export default FileRef;

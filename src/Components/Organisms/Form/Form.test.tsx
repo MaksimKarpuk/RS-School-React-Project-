@@ -14,7 +14,7 @@ describe('form', () => {
     const input = screen.getByPlaceholderText('Name');
     fireEvent.change(input, { target: { value: 'qwerty' } });
     expect(input).toBeInTheDocument();
-    expect(input.value).toBe('qwerty');
+    expect((input as HTMLInputElement).value).toBe('qwerty');
   });
   it('input-checkbox', () => {
     render(
@@ -57,6 +57,6 @@ describe('form', () => {
     const select = screen.getByTestId('select');
     expect(select).toBeInTheDocument();
     fireEvent.change(select, { target: { value: 'Minsk' } });
-    expect(select.value).toBe('Minsk');
+    expect((select as HTMLSelectElement).value).toBe('Minsk');
   });
 });

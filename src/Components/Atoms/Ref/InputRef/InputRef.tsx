@@ -1,24 +1,18 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { Component } from 'react';
+import { FC } from 'react';
 
 interface IProps {
   placeholder: string;
-  inputField: React.RefObject<HTMLInputElement>;
+  inputField: React.MutableRefObject<HTMLInputElement | undefined>;
 }
-class InputRef extends Component<IProps> {
-  render() {
-    return (
-      <>
-        <label htmlFor="name" />
-        Enter a name
-        <input
-          type="text"
-          id="name"
-          placeholder={this.props.placeholder}
-          ref={this.props.inputField}
-        />
-      </>
-    );
-  }
-}
+const InputRef: FC<IProps> = (props) => {
+  return (
+    <>
+      <label htmlFor="name" />
+      Enter a name
+      <input type="text" id="name" placeholder={props.placeholder} ref={props.inputField} />
+    </>
+  );
+};
+
 export default InputRef;

@@ -1,22 +1,21 @@
-import { Component } from 'react';
+import { FC } from 'react';
 
 interface IProps {
-  value?: string;
-  handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
 }
-class Input extends Component<IProps> {
-  render() {
-    return (
-      <div>
-        <input
-          type="text"
-          placeholder={this.props.placeholder}
-          value={this.props.value}
-          onChange={this.props.handleChange}
-        />
-      </div>
-    );
-  }
-}
+const Input: FC<IProps> = (props) => {
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder={props.placeholder}
+        value={props.value}
+        onChange={props.handleChange}
+      />
+    </div>
+  );
+};
+
 export default Input;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Component } from 'react';
+import { FC } from 'react';
 import Input from '../../Atoms/Ref/InputRef/InputRef';
 import Date from '../../Atoms/Ref/DateRef/DateRef';
 import FormCard from '../../Molecules/FormCard/FormCard';
@@ -19,13 +19,13 @@ interface IValue {
   fileValue: File | Blob | undefined;
 }
 interface IProps {
-  inputField: React.RefObject<HTMLInputElement>;
-  dateField: React.RefObject<HTMLInputElement>;
-  checkboxField: React.RefObject<HTMLInputElement>;
-  radioFieldPhone: React.RefObject<HTMLInputElement>;
-  radioFieldEmail: React.RefObject<HTMLInputElement>;
-  selectField: React.RefObject<HTMLSelectElement>;
-  fileField: React.RefObject<HTMLInputElement>;
+  inputField: React.MutableRefObject<HTMLInputElement | undefined>;
+  dateField: React.MutableRefObject<HTMLInputElement | undefined>;
+  checkboxField: React.MutableRefObject<HTMLInputElement | undefined>;
+  radioFieldMale: React.MutableRefObject<HTMLInputElement | undefined>;
+  radioFieldFimale: React.MutableRefObject<HTMLInputElement | undefined>;
+  selectField: React.MutableRefObject<HTMLSelectElement | undefined>;
+  fileField: React.MutableRefObject<HTMLInputElement | undefined>;
   setForm: (e: React.MouseEvent<HTMLButtonElement>) => void;
   cards: IValue[];
   error: boolean;
@@ -36,74 +36,68 @@ interface IProps {
   radioError: boolean;
 }
 
-class FormView extends Component<IProps, unknown> {
-  render() {
-    return (
-      <>
-        <form className={style.form}>
-          <div className={style.form__container}>
-            <div className={style.container__inputs}>
-              <div className={style.container__input}>
-                <Input placeholder="Name" inputField={this.props.inputField} />
-                {this.props.error ? (
-                  <div className={style.error}>It is necessary to fill</div>
-                ) : null}
-              </div>
-              <div className={style.container__date}>
-                <Date dateField={this.props.dateField} />
-                {this.props.dateError ? (
-                  <div className={style.error}>It is necessary to select</div>
-                ) : null}
-              </div>
-              <div className={style.container__select}>
-                <Select selectField={this.props.selectField} />
-                {this.props.selectError ? (
-                  <div className={style.error}>It is necessary to select</div>
-                ) : null}
-              </div>
-              <div className={style.container__radio}>
-                <div className={style.radio__btns}>
-                  <Radio radioField={this.props.radioFieldPhone} label="Male" />
-                  <Radio radioField={this.props.radioFieldEmail} label="Fimale" />
-                </div>
-                {this.props.radioError ? (
-                  <div className={style.error}>It is necessary to select</div>
-                ) : null}
-              </div>
-              <div className={style.container__file}>
-                <File fileField={this.props.fileField} label="Add your photo" />
-                {this.props.fileError ? (
-                  <div className={style.error}>It is necessary to fill</div>
-                ) : null}
-              </div>
-              <div className={style.container__checkbox}>
-                <Checkbox checkboxField={this.props.checkboxField} />
-                {this.props.checkboxError ? (
-                  <div className={style.error}>It is necessary to confirm</div>
-                ) : null}
-              </div>
-              <button type="submit" onClick={this.props.setForm} data-testid="button">
-                Submit
-              </button>
+const FormView: FC<IProps> = (props) => {
+  return (
+    <>
+      <form className={style.form}>
+        <div className={style.form__container}>
+          <div className={style.container__inputs}>
+            <div className={style.container__input}>
+              <Input placeholder="Name" inputField={props.inputField} />
+              {props.error ? <div className={style.error}>It is necessary to fill</div> : null}
             </div>
+            <div className={style.container__date}>
+              <Date dateField={props.dateField} />
+              {props.dateError ? (
+                <div className={style.error}>It is necessary to select</div>
+              ) : null}
+            </div>
+            <div className={style.container__select}>
+              <Select selectField={props.selectField} />
+              {props.selectError ? (
+                <div className={style.error}>It is necessary to select</div>
+              ) : null}
+            </div>
+            <div className={style.container__radio}>
+              <div className={style.radio__btns}>
+                <Radio radioField={props.radioFieldMale} label="Male" />
+                <Radio radioField={props.radioFieldFimale} label="Fimale" />
+              </div>
+              {props.radioError ? (
+                <div className={style.error}>It is necessary to select</div>
+              ) : null}
+            </div>
+            <div className={style.container__file}>
+              <File fileField={props.fileField} label="Add your photo" />
+              {props.fileError ? <div className={style.error}>It is necessary to fill</div> : null}
+            </div>
+            <div className={style.container__checkbox}>
+              <Checkbox checkboxField={props.checkboxField} />
+              {props.checkboxError ? (
+                <div className={style.error}>It is necessary to confirm</div>
+              ) : null}
+            </div>
+            <button type="submit" onClick={props.setForm} data-testid="button">
+              Submit
+            </button>
           </div>
-        </form>
-        <div className={style.container__card}>
-          {this.props.cards.map((item) => (
-            <FormCard
-              key={item.id}
-              inputValue={item.inputValue}
-              inputDate={item.inputDate}
-              checkboxValue={item.checkboxValue}
-              radioValue={item.radioValue}
-              selectValue={item.selectValue}
-              fileValue={item.fileValue}
-            />
-          ))}
         </div>
-      </>
-    );
-  }
-}
+      </form>
+      <div className={style.container__card}>
+        {props.cards.map((item) => (
+          <FormCard
+            key={item.id}
+            inputValue={item.inputValue}
+            inputDate={item.inputDate}
+            checkboxValue={item.checkboxValue}
+            radioValue={item.radioValue}
+            selectValue={item.selectValue}
+            fileValue={item.fileValue}
+          />
+        ))}
+      </div>
+    </>
+  );
+};
 
 export default FormView;

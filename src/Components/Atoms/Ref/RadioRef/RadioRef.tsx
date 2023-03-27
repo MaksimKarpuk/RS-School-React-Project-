@@ -1,24 +1,24 @@
-import { Component } from 'react';
+import { FC } from 'react';
 
 interface IProps {
-  radioField: React.RefObject<HTMLInputElement>;
+  radioField: React.MutableRefObject<HTMLInputElement | undefined>;
   label: string;
 }
-class RadioRef extends Component<IProps> {
-  render() {
-    return (
-      <>
-        <input
-          type="radio"
-          id="radioRef"
-          ref={this.props.radioField}
-          name="radio"
-          value={this.props.label}
-          data-testid="radio"
-        />
-        <label htmlFor="radioRef">{this.props.label}</label>
-      </>
-    );
-  }
-}
+
+const RadioRef: FC<IProps> = (props) => {
+  return (
+    <>
+      <input
+        type="radio"
+        id="radioRef"
+        ref={props.radioField}
+        name="radio"
+        value={props.label}
+        data-testid="radio"
+      />
+      <label htmlFor="radioRef">{props.label}</label>
+    </>
+  );
+};
+
 export default RadioRef;

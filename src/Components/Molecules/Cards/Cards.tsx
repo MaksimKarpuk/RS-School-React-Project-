@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { FC } from 'react';
 import CardsView from './CardsView';
 import image1 from '../../../assets/images/1.jpg';
 import image2 from '../../../assets/images/2.jpg';
@@ -26,20 +26,13 @@ const CardsInfo: ICardInfoItem[] = [
   { id: 6, title: 'Dog', subtitle: '05-09-18', src: image6 },
 ];
 
-class Cards extends Component<IProps, unknown> {
-  constructor(props: IProps) {
-    super(props);
-    this.getCards = this.getCards.bind(this);
-  }
-
-  getCards = () => {
+const Cards: FC<IProps> = (props) => {
+  const getCards = () => {
     return CardsInfo.filter((item) => {
-      return item.title.toLowerCase().includes(this.props.searchValue.toLowerCase());
+      return item.title.toLowerCase().includes(props.searchValue.toLowerCase());
     });
   };
+  return <CardsView getCards={getCards} />;
+};
 
-  render() {
-    return <CardsView getCards={this.getCards} />;
-  }
-}
 export default Cards;

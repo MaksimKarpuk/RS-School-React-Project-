@@ -51,6 +51,7 @@ module.exports = {
     'react/sort-comp': 'off',
     '@typescript-eslint/no-unused-expressions': 'off',
     'no-nested-ternary': 'off',
+    'react/function-component-definition': 'off',
   },
   settings: {
     react: {
