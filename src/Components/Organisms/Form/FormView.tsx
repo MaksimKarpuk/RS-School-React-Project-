@@ -92,7 +92,7 @@ const FormView: FC<IProps> = (props) => {
             checkboxValue={item.checkboxValue}
             radioValue={item.radioValue}
             selectValue={item.selectValue}
-            fileValue={item.fileValue}
+            fileValue={item.fileValue as BlobPart}
           />
         ))}
       </div>

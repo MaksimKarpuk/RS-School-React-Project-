@@ -7,7 +7,7 @@ interface IProps {
   inputDate: string | undefined;
   selectValue: string | undefined;
   radioValue: string | undefined;
-  fileValue: File | Blob;
+  fileValue: BlobPart;
   checkboxValue: boolean | undefined;
 }
 
