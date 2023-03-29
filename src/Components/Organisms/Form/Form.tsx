@@ -22,16 +22,15 @@ interface IErrors {
   fileError: boolean;
   radioError: boolean;
 }
-
 interface IState {
   cards: IValue[];
-
   error: boolean;
   selectError: boolean;
   checkboxError: boolean;
   dateError: boolean;
   fileError: boolean;
   radioError: boolean;
+  popup: boolean;
 }
 
 const Form: FC = () => {
@@ -50,7 +49,12 @@ const Form: FC = () => {
     fileError: false,
     radioError: false,
     cards: [],
+    popup: false,
   });
+
+  const setUnvisiblePopup = () => {
+    setState({ ...state, popup: false });
+  };
   const submitForm = () => {
     const values = {
       id: uuid(),
@@ -72,6 +76,7 @@ const Form: FC = () => {
     stateValue.cards.push(values);
     setState(stateValue);
     localStorage.setItem('cards', JSON.stringify(stateValue.cards));
+
     if (inputField.current?.value) {
       inputField.current.value = '';
     }
@@ -98,8 +103,8 @@ const Form: FC = () => {
       dateError: false,
       fileError: false,
       radioError: false,
+      popup: true,
     });
-    alert('The form has been saved successfully');
   };
   const setForm = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -178,6 +183,8 @@ const Form: FC = () => {
         dateError={state.dateError}
         fileError={state.fileError}
         radioError={state.radioError}
+        visiblePopup={state.popup}
+        setUnvisiblePopup={setUnvisiblePopup}
       />
     </div>
   );

@@ -7,6 +7,7 @@ import Checkbox from '../../Atoms/Ref/CheckboxRef/CheckboxRef';
 import Radio from '../../Atoms/Ref/RadioRef/RadioRef';
 import Select from '../../Atoms/Ref/SelectRef/SelectRef';
 import File from '../../Atoms/Ref/FileRef/FileRef';
+import Popup from '../../Atoms/Popup/Popup';
 import style from './styles.module.scss';
 
 interface IValue {
@@ -34,6 +35,8 @@ interface IProps {
   dateError: boolean;
   fileError: boolean;
   radioError: boolean;
+  visiblePopup: boolean;
+  setUnvisiblePopup: () => void;
 }
 
 const FormView: FC<IProps> = (props) => {
@@ -96,6 +99,7 @@ const FormView: FC<IProps> = (props) => {
           />
         ))}
       </div>
+      <Popup visiblePopup={props.visiblePopup} setPopup={props.setUnvisiblePopup} />
     </>
   );
 };
