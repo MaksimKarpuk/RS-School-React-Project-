@@ -3,7 +3,8 @@ import { FC } from 'react';
 import style from './styles.module.scss';
 
 interface IProps {
-  inputValue: string | undefined;
+  firstName: string | undefined;
+  secondName: string | undefined;
   inputDate: string | undefined;
   selectValue: string | undefined;
   radioValue: string | undefined;
@@ -20,7 +21,9 @@ const FormCard: FC<IProps> = (props) => {
             <img src={URL.createObjectURL(new Blob([props.fileValue]))} />
           </div>
           <div className={style.card__info}>
-            <div className={style.info__name}>Name: {props.inputValue}</div>
+            <div className={style.info__name}>
+              Full name: {props.firstName} {props.secondName}
+            </div>
             <div className={style.info__birthday_date}>Birthday Date: {props.inputDate}</div>
             <div className={style.info__select}> City: {props.selectValue}</div>
             <div className={style.info__radio}>Gender: {props.radioValue}</div>

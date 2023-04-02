@@ -90,7 +90,8 @@ const FormView: FC<IProps> = (props) => {
         {props.cards.map((item) => (
           <FormCard
             key={item.id}
-            inputValue={item.inputValue}
+            firstName={item.inputValue}
+            secondName={item.inputValue}
             inputDate={item.inputDate}
             checkboxValue={item.checkboxValue}
             radioValue={item.radioValue}

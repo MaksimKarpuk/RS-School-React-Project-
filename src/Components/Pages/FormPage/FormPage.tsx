@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import Form from '../../Organisms/Form/Form';
+import NewForm from '../../Organisms/NewForm/NewForm';
 
 const FormPage: FC = () => {
   return (
     <div data-testid="form-page">
-      <Form />
+      <NewForm />
     </div>
   );
 };

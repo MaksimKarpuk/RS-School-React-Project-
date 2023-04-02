@@ -13,6 +13,7 @@ const Popup: FC<IProps> = (props) => {
     <div
       className={props.visiblePopup ? style.popupVisible : style.popupUnvisible}
       onClick={() => props.setPopup()}
+      data-testid="new-form-popup"
     >
       <div className={style.popup__container}>
         <div className={style.container__info}>The form has been saved successfully</div>
