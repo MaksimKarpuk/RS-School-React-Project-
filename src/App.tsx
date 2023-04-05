@@ -9,14 +9,30 @@ import Header from './Components/Organisms/Header/Header';
 import './App.scss';
 
 interface IMovie {
-  _id: string;
+  birth_year: string;
+  created: string;
+  edited: string;
+  eye_color: string;
+  films: string[];
+  gender: string;
+  hair_color: string;
+  height: string;
+  homeworld: string;
+  mass: string;
   name: string;
-  runtimeInMinutes: number;
-  budgetInMillions: number;
-  boxOfficeRevenueInMillions: number;
-  academyAwardNominations: number;
-  academyAwardWins: number;
-  rottenTomatoesScore: number;
+  skin_color: string;
+  species: [];
+  starships: string[];
+  url: string;
+  vehicles: string[];
+  // _id: string;
+  // name: string;
+  // runtimeInMinutes: number;
+  // budgetInMillions: number;
+  // boxOfficeRevenueInMillions: number;
+  // academyAwardNominations: number;
+  // academyAwardWins: number;
+  // rottenTomatoesScore: number;
 }
 interface IMovies {
   state: IMovie[];
@@ -27,19 +43,19 @@ const App: FC = () => {
   const [movies, setMovies] = useState<IMovies>({ state: [] });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
-    localStorage.setItem('searchValue', JSON.stringify(searchValue));
   };
-  const url = 'https://the-one-api.dev/v2/movie';
   useEffect(() => {
-    fetch(url, {
-      method: 'get',
-      headers: new Headers({
-        Authorization: 'Bearer eMgefz583gEwRGUTXbWl',
-      }),
-    })
+    return () => {
+      localStorage.setItem('searchValue', JSON.stringify(searchValue));
+    };
+  }, [searchValue]);
+  const url = 'https://swapi.dev/api/people';
+  useEffect(() => {
+    fetch(url)
       .then((res) => res.json())
       .then((result) => {
-        setMovies({ state: result.docs });
+        setMovies({ state: result.results });
+        console.log(result);
       });
   }, []);
 

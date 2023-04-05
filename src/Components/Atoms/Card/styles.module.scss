@@ -3,6 +3,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  border: 0.0625rem solid $header;
+  padding: 3rem;
+  height: 20rem;
+  width: 20rem;
   .card__image {
     max-width: 20rem;
     max-height: 20rem;
@@ -12,6 +16,6 @@
     }
   }
   .card__subtitle {
-    @include H12;
+    
   }
 }

@@ -2,14 +2,22 @@ import { FC } from 'react';
 import CardsView from './CardsView';
 
 interface IMovie {
-  _id: string;
+  birth_year: string;
+  created: string;
+  edited: string;
+  eye_color: string;
+  films: string[];
+  gender: string;
+  hair_color: string;
+  height: string;
+  homeworld: string;
+  mass: string;
   name: string;
-  runtimeInMinutes: number;
-  budgetInMillions: number;
-  boxOfficeRevenueInMillions: number;
-  academyAwardNominations: number;
-  academyAwardWins: number;
-  rottenTomatoesScore: number;
+  skin_color: string;
+  species: [];
+  starships: string[];
+  url: string;
+  vehicles: string[];
 }
 interface IProps {
   searchValue: string;
@@ -17,12 +25,11 @@ interface IProps {
 }
 
 const Cards: FC<IProps> = (props) => {
-  const getCards = () => {
-    return props.movies.filter((item) => {
-      return item.name.toLowerCase().includes(props.searchValue.toLowerCase());
-    });
-  };
-  return <CardsView getCards={getCards} />;
+  const cards = props.movies.filter((item) => {
+    return item.name.toLowerCase().includes(props.searchValue.toLowerCase());
+  });
+
+  return <CardsView cards={cards} />;
 };
 
 export default Cards;
