@@ -1,19 +1,13 @@
-import { FC } from 'react';
+import { FC, KeyboardEvent } from 'react';
 
 interface IProps {
-  value: string;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (e: KeyboardEvent<HTMLInputElement>) => void;
   placeholder: string;
 }
 const Input: FC<IProps> = (props) => {
   return (
     <div>
-      <input
-        type="text"
-        placeholder={props.placeholder}
-        value={props.value}
-        onChange={props.handleChange}
-      />
+      <input type="text" placeholder={props.placeholder} onKeyDown={props.handleChange} />
     </div>
   );
 };

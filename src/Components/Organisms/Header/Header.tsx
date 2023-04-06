@@ -1,23 +1,17 @@
 import * as React from 'react';
-import { FC } from 'react';
+import { FC, KeyboardEvent } from 'react';
 import { NavLink } from 'react-router-dom';
 import Input from '../../Atoms/Input/Input';
 import style from './styles.module.scss';
+import { IMenuValue } from '../../../interfaces';
 
 const headerLinks: IMenuValue[] = [
   { id: 1, title: 'Main', path: '/', dataTestid: 'main-link' },
   { id: 2, title: 'About', path: '/about', dataTestid: 'about-link' },
   { id: 3, title: 'Form', path: '/form', dataTestid: 'form-link' },
 ];
-interface IMenuValue {
-  id: number;
-  title: string;
-  path: string;
-  dataTestid: string;
-}
 interface IProps {
-  searchValue: string;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const Header: FC<IProps> = (props) => {
@@ -32,11 +26,7 @@ const Header: FC<IProps> = (props) => {
           ))}
         </div>
         <div className={style.container__search_bar}>
-          <Input
-            placeholder="Search..."
-            value={props.searchValue}
-            handleChange={props.handleChange}
-          />
+          <Input placeholder="Search..." handleChange={props.handleChange} />
         </div>
       </div>
     </div>

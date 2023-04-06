@@ -3,27 +3,10 @@
 /* eslint-disable jsx-a11y/aria-role */
 import { FC } from 'react';
 import style from './styles.module.scss';
+import { IMovie } from '../../../interfaces';
 
-interface ICardInfoItem {
-  birth_year: string;
-  created: string;
-  edited: string;
-  eye_color: string;
-  films: string[];
-  gender: string;
-  hair_color: string;
-  height: string;
-  homeworld: string;
-  mass: string;
-  name: string;
-  skin_color: string;
-  species: [];
-  starships: string[];
-  url: string;
-  vehicles: string[];
-}
 interface IProps {
-  item: ICardInfoItem;
+  item: IMovie;
 }
 
 const Card: FC<IProps> = (props) => {

@@ -6,33 +6,16 @@ import { FC, useState } from 'react';
 import Card from '../../Atoms/Card/Card';
 import CardPopup from '../../Atoms/CardPopup/CardPopup';
 import style from './styles.module.scss';
+import { IMovie } from '../../../interfaces';
 
-interface ICardInfoItem {
-  birth_year: string;
-  created: string;
-  edited: string;
-  eye_color: string;
-  films: string[];
-  gender: string;
-  hair_color: string;
-  height: string;
-  homeworld: string;
-  mass: string;
-  name: string;
-  skin_color: string;
-  species: [];
-  starships: string[];
-  url: string;
-  vehicles: string[];
-}
 interface IProps {
-  cards: ICardInfoItem[];
+  movies: IMovie[];
 }
 
 const CardsView: FC<IProps> = (props) => {
-  const [popupInfo, setPopupInform] = useState<ICardInfoItem>();
+  const [popupInfo, setPopupInform] = useState<IMovie>();
   const setPopupInfo = (name) => {
-    const info = props.cards.find((item) => item.name === name);
+    const info = props.movies.find((item) => item.name === name);
     if (info) {
       setPopupInform(info);
     }
@@ -43,7 +26,7 @@ const CardsView: FC<IProps> = (props) => {
   return (
     <div>
       <div className={style.cards} data-testid="cards">
-        {props.cards.map((item) => (
+        {props.movies.map((item) => (
           <div key={item.name} onClick={() => setPopupInfo(item.name)}>
             <Card item={item} />
           </div>
