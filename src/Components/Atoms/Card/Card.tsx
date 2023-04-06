@@ -12,8 +12,8 @@ interface IProps {
 const Card: FC<IProps> = (props) => {
   return (
     <div className={style.card} data-testid="card">
-      <div className={style.card__title}>{props.item.name}</div>
-      <div className={style.card__subtitle}>{props.item.gender}</div>
+      <div className={style.card__name}>{props.item.name}</div>
+      <div className={style.card__gender}>{props.item.gender}</div>
     </div>
   );
 };

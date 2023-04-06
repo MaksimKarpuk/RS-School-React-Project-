@@ -7,15 +7,7 @@
   padding: 3rem;
   height: 20rem;
   width: 20rem;
-  .card__image {
-    max-width: 20rem;
-    max-height: 20rem;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-  .card__subtitle {
-    
+  .card__name{
+    @include H32;
   }
 }
