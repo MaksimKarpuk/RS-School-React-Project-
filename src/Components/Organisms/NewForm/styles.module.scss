@@ -1,0 +1,81 @@
+@import '../../../index.scss';
+
+form {
+  @include container;
+  border: 0.0625rem solid $header;
+  padding: 2rem;
+  max-width: 25rem;
+  height: 100%;
+  margin: 3rem auto;
+  .button {
+    padding: 1rem 5rem;
+    background-color: $yellow;
+    border-radius: 0.5rem;
+  }
+  .inputs__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    label {
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 0.0625rem solid $black;
+        border-radius: 0.5rem;
+      }
+    }
+    .text {
+      height: 4rem;
+    }
+  }
+  .input__date {
+    height: 5rem;
+    label {
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 0.0625rem solid $black;
+        border-radius: 0.5rem;
+      }
+    }
+  }
+  .input__radios {
+    height: 2rem;
+    margin-bottom: 0.8rem;
+    .radios {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      .radio {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+      }
+    }
+  }
+  .input__select {
+    height: 5rem;
+    select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 0.0625rem solid $black;
+      border-radius: 0.5rem;
+    }
+  }
+  .input__file {
+    margin-bottom: 0.5rem;
+  }
+  .input__checkbox {
+    height: 3rem;
+    .checkbox {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+}
+
+.error {
+  @include H12;
+  color: $red;
+}
