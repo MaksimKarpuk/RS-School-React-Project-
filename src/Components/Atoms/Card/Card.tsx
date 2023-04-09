@@ -3,17 +3,17 @@
 /* eslint-disable jsx-a11y/aria-role */
 import { FC } from 'react';
 import style from './styles.module.scss';
-import { IMovie } from '../../../interfaces';
 
 interface IProps {
-  item: IMovie;
+  name: string;
+  gender: string;
 }
 
-const Card: FC<IProps> = (props) => {
+const Card: FC<IProps> = ({ name, gender }) => {
   return (
     <div className={style.card} data-testid="card">
-      <div className={style.card__name}>{props.item.name}</div>
-      <div className={style.card__gender}>{props.item.gender}</div>
+      <div className={style.card__name}>{name}</div>
+      <div className={style.card__gender}>{gender}</div>
     </div>
   );
 };

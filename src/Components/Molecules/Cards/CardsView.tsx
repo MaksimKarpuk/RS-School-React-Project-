@@ -28,7 +28,7 @@ const CardsView: FC<IProps> = (props) => {
       <div className={style.cards} data-testid="cards">
         {props.movies.map((item) => (
           <div key={item.name} onClick={() => setPopupInfo(item.name)}>
-            <Card item={item} />
+            <Card name={item.name} gender={item.gender} />
           </div>
         ))}
         {popupInfo && <CardPopup item={popupInfo} setUnvisiblePopup={setUnvisiblePopup} />}
