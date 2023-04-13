@@ -1,27 +1,24 @@
-/* eslint-disable no-underscore-dangle */
 import { FC } from 'react';
 import ReactLoading from 'react-loading';
-import Cards from '../../Molecules/Cards/Cards';
+import CardsView from '../../Molecules/Cards/CardsView';
 import style from './styles.module.scss';
-import { IMovie } from '../../../interfaces';
+import { personsAPI } from '../../../services/PersonsService';
+import { useAppSelector } from '../../../store/hooks/useTypedSelector';
 
-interface IProps {
-  movies: IMovie[];
-  loading: boolean;
-}
-
-const MainPage: FC<IProps> = (props) => {
+const MainPage: FC = () => {
+  const value = useAppSelector((state) => state.Persons.searchValue);
+  const { data, isLoading } = personsAPI.useFetchAllPersonsQuery(value);
   return (
     <div className={style.main} data-testid="main-page">
-      {props.movies.length === 0 && !props.loading && (
+      {data?.results?.length === 0 && !isLoading && (
         <div className={style.main__empty}>Not found</div>
       )}
-      {props.loading && (
+      {isLoading && (
         <div className={style.main__loader}>
           <ReactLoading type="spin" color="#FF1493" height={300} width={300} />
         </div>
       )}
-      {!props.loading && <Cards movies={props.movies} />}
+      {!isLoading && <CardsView movies={data?.results || []} />}
     </div>
   );
 };

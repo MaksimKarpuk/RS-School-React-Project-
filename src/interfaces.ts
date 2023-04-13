@@ -26,3 +26,14 @@ export interface IMenuValue {
   path: string;
   dataTestid: string;
 }
+
+export interface IValues {
+  id: string;
+  checkbox: boolean;
+  city: string;
+  date: string;
+  file: File;
+  firstName: string;
+  radio: string;
+  secondName: string;
+}

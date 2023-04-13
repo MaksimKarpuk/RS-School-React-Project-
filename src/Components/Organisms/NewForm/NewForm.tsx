@@ -1,11 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable react/jsx-props-no-spreading */
+
 import { FC } from 'react';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
-import uuid from 'react-uuid';
 import FormCard from '../../Molecules/FormCard/FormCard';
 import style from './styles.module.scss';
 import Popup from '../../Atoms/Popup/Popup';
@@ -15,27 +13,18 @@ import InputSelector from '../../Atoms/FormInputs/InputSelect';
 import InputDate from '../../Atoms/FormInputs/InputDate';
 import InputCheckbox from '../../Atoms/FormInputs/InputCheckbox';
 import InputRadio from '../../Atoms/FormInputs/InputRadio';
-
-interface IValues {
-  id: string;
-  checkbox: boolean;
-  city: string;
-  date: string;
-  file: File;
-  firstName: string;
-  radio: string;
-  secondName: string;
-}
-interface IState {
-  popup: boolean;
-  cards: IValues[];
-}
+import { useAppSelector, useAppDispatch } from '../../../store/hooks/useTypedSelector';
+import {
+  setVisiblePopup,
+  setUnvisiblePopup,
+  addFormCard,
+  getCardsFromLocalStorage,
+} from '../../../store/Form';
 
 const NewForm: FC = () => {
-  const [state, setState] = React.useState<IState>({
-    cards: [],
-    popup: false,
-  });
+  const cards = useAppSelector((state) => state.Form.cards);
+  const popup = useAppSelector((state) => state.Form.popup);
+  const dispatch = useAppDispatch();
   const {
     register,
     setValue,
@@ -43,35 +32,20 @@ const NewForm: FC = () => {
     reset,
     formState: { errors },
   } = useForm({ mode: 'onBlur' });
-  const setUnvisiblePopup = () => {
-    setState({ ...state, popup: false });
+  const openPopup = () => {
+    dispatch(setVisiblePopup(true));
   };
-  const setVisiblePopup = () => {
-    setState({ ...state, popup: true });
+  const closePopup = () => {
+    dispatch(setUnvisiblePopup(false));
   };
+
   const onSubmit = (data) => {
-    const values: IValues = {
-      id: uuid(),
-      checkbox: data.checkbox,
-      city: data.city,
-      date: data.date,
-      file: data.file,
-      firstName: data.firstName,
-      radio: data.radio,
-      secondName: data.secondName,
-    };
-    const stateValues = { ...state };
-    stateValues.cards.push(values);
-    setState(stateValues);
-    localStorage.setItem('cards', JSON.stringify(stateValues.cards));
-    setVisiblePopup();
+    dispatch(addFormCard(data));
+    openPopup();
     reset();
   };
   React.useEffect(() => {
-    const initialCards = localStorage.getItem('cards');
-    if (initialCards) {
-      setState({ ...state, cards: JSON.parse(initialCards) });
-    }
+    dispatch(getCardsFromLocalStorage());
   }, []);
   const onChange = (e) => {
     const files = e.target.files[0];
@@ -132,7 +106,7 @@ const NewForm: FC = () => {
         </button>
       </form>
       <div className={style.container__card}>
-        {state.cards.map((item) => (
+        {cards.map((item) => (
           <FormCard
             key={item.id}
             firstName={item.firstName}
@@ -145,7 +119,7 @@ const NewForm: FC = () => {
           />
         ))}
       </div>
-      <Popup visiblePopup={state.popup} setPopup={setUnvisiblePopup} />
+      <Popup visiblePopup={popup} setPopup={closePopup} />
     </>
   );
 };

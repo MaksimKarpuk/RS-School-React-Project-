@@ -23,6 +23,7 @@ const CardsView: FC<IProps> = (props) => {
   const setUnvisiblePopup = () => {
     setPopupInform();
   };
+
   return (
     <div>
       <div className={style.cards} data-testid="cards">
