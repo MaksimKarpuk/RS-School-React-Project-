@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-alert */
 import * as React from 'react';
 import { FC } from 'react';
 import uuid from 'react-uuid';

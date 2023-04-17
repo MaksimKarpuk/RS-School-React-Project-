@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 module.exports = {
   env: {
     browser: true,
@@ -52,6 +53,14 @@ module.exports = {
     '@typescript-eslint/no-unused-expressions': 'off',
     'no-nested-ternary': 'off',
     'react/function-component-definition': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/jsx-no-useless-fragment': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/alt-text': 'off',
+    'no-alert': 'off',
+    'react-hooks/exhaustive-deps': 'off',
   },
   settings: {
     react: {

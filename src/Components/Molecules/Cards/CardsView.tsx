@@ -1,7 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable no-underscore-dangle */
-
 import { FC, useState } from 'react';
 import Card from '../../Atoms/Card/Card';
 import CardPopup from '../../Atoms/CardPopup/CardPopup';

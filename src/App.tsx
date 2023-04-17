@@ -1,5 +1,4 @@
 /* eslint-disable import/no-import-module-exports */
-/* eslint-disable no-alert */
 import { FC, KeyboardEvent } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useAppDispatch } from './store/hooks/useTypedSelector';

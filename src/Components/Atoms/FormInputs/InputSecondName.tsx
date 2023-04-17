@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { FC } from 'react';
 import { UseFormRegister } from 'react-hook-form/dist/types';
 
