@@ -1,6 +1,8 @@
 import { fireEvent, render, screen, cleanup } from '@testing-library/react';
+import { Provider } from 'react-redux';
 import { expect } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
+import { setupStore } from '../../../store/index';
 import NewForm from './NewForm';
 
 describe('form', () => {
@@ -8,7 +10,9 @@ describe('form', () => {
   it('submit button', () => {
     render(
       <MemoryRouter>
-        <NewForm />
+        <Provider store={setupStore}>
+          <NewForm />
+        </Provider>
       </MemoryRouter>
     );
     expect(screen.getByRole('button')).toBeInTheDocument();
@@ -17,7 +21,9 @@ describe('form', () => {
   it('input-text-firstName', () => {
     render(
       <MemoryRouter>
-        <NewForm />
+        <Provider store={setupStore}>
+          <NewForm />
+        </Provider>
       </MemoryRouter>
     );
     const input = screen.getByPlaceholderText('First name');
@@ -28,7 +34,9 @@ describe('form', () => {
   it('input-text-secondName', () => {
     render(
       <MemoryRouter>
-        <NewForm />
+        <Provider store={setupStore}>
+          <NewForm />
+        </Provider>
       </MemoryRouter>
     );
     const input = screen.getByPlaceholderText('Second name');
@@ -39,7 +47,9 @@ describe('form', () => {
   it('input-checkbox', () => {
     render(
       <MemoryRouter>
-        <NewForm />
+        <Provider store={setupStore}>
+          <NewForm />
+        </Provider>
       </MemoryRouter>
     );
     const checkbox = screen.getByTestId('new-form-checkbox');
@@ -49,7 +59,9 @@ describe('form', () => {
   it('radio-male', () => {
     render(
       <MemoryRouter>
-        <NewForm />
+        <Provider store={setupStore}>
+          <NewForm />
+        </Provider>
       </MemoryRouter>
     );
     const radio = screen.getByLabelText('Male');
@@ -60,7 +72,9 @@ describe('form', () => {
   it('radio-female', () => {
     render(
       <MemoryRouter>
-        <NewForm />
+        <Provider store={setupStore}>
+          <NewForm />
+        </Provider>
       </MemoryRouter>
     );
     const radio = screen.getByLabelText('Fimale');
@@ -71,7 +85,9 @@ describe('form', () => {
   it('select', () => {
     render(
       <MemoryRouter>
-        <NewForm />
+        <Provider store={setupStore}>
+          <NewForm />
+        </Provider>
       </MemoryRouter>
     );
     const select = screen.getByTestId('new-form-select');
@@ -84,7 +100,9 @@ describe('form', () => {
   it('clear form', () => {
     render(
       <MemoryRouter>
-        <NewForm />
+        <Provider store={setupStore}>
+          <NewForm />
+        </Provider>
       </MemoryRouter>
     );
     const submit = screen.getByRole('button');
@@ -97,7 +115,9 @@ describe('form', () => {
   it('visible popup', () => {
     render(
       <MemoryRouter>
-        <NewForm />
+        <Provider store={setupStore}>
+          <NewForm />
+        </Provider>
       </MemoryRouter>
     );
     const submit = screen.getByRole('button');

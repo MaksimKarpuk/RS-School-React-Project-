@@ -1,7 +1,9 @@
 import { render, screen, cleanup, waitFor } from '@testing-library/react';
+import { Provider } from 'react-redux';
 import userEvent from '@testing-library/user-event';
 import { expect } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
+import { setupStore } from './store/index';
 import App from './App';
 
 describe('routes', () => {
@@ -9,7 +11,9 @@ describe('routes', () => {
   it('correct routes', () => {
     render(
       <MemoryRouter>
-        <App />
+        <Provider store={setupStore}>
+          <App />
+        </Provider>
       </MemoryRouter>
     );
     const mainLink = screen.getByTestId('main-link');
@@ -28,7 +32,9 @@ describe('routes', () => {
   it('error routes', () => {
     render(
       <MemoryRouter initialEntries={['/ololo']}>
-        <App />
+        <Provider store={setupStore}>
+          <App />
+        </Provider>
       </MemoryRouter>
     );
     const errorPage = screen.queryByTestId('error-page');
