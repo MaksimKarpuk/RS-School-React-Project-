@@ -7,18 +7,19 @@ import { useAppSelector } from '../../../store/hooks/useTypedSelector';
 
 const MainPage: FC = () => {
   const value = useAppSelector((state) => state.Persons.searchValue);
-  const { data, isLoading } = personsAPI.useFetchAllPersonsQuery(value);
+  const { data, isFetching } = personsAPI.useFetchAllPersonsQuery(value);
+
   return (
     <div className={style.main} data-testid="main-page">
-      {data?.results?.length === 0 && !isLoading && (
+      {data?.results?.length === 0 && !isFetching && (
         <div className={style.main__empty}>Not found</div>
       )}
-      {isLoading && (
+      {isFetching && (
         <div className={style.main__loader}>
           <ReactLoading type="spin" color="#FF1493" height={300} width={300} />
         </div>
       )}
-      {!isLoading && <CardsView movies={data?.results || []} />}
+      {!isFetching && <CardsView movies={data?.results || []} />}
     </div>
   );
 };

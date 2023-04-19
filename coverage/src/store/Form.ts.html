@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/Components/Molecules/Cards/Cards.tsx</title>
+    <title>Code coverage report for src/store/Form.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/Components/Molecules/Cards</a> Cards.tsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/store</a> Form.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">96% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>38/38</span>
+                <span class='fraction'>48/50</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>5/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>5/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">96% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>38/38</span>
+                <span class='fraction'>48/50</span>
             </div>
         
             
@@ -101,7 +101,19 @@
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
 <a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -132,51 +144,75 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { FC } from 'react';
-import CardsView from './CardsView';
-import image1 from '../../../assets/images/1.jpg';
-import image2 from '../../../assets/images/2.jpg';
-import image3 from '../../../assets/images/3.jpg';
-import image4 from '../../../assets/images/4.jpg';
-import image5 from '../../../assets/images/5.jpg';
-import image6 from '../../../assets/images/6.jpg';
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
+import uuid from 'react-uuid';
+import { IValues } from '../interfaces';
 &nbsp;
-interface ICardInfoItem {
-  id: number;
-  title: string;
-  subtitle: string;
-  src: string;
+interface IState {
+  cards: IValues[];
+  popup: boolean;
 }
-interface IProps {
-  searchValue: string;
-}
 &nbsp;
-const CardsInfo: ICardInfoItem[] = [
-  { id: 1, title: 'Home', subtitle: '24-02-22', src: image1 },
-  { id: 2, title: 'Nature', subtitle: '02-03-19', src: image2 },
-  { id: 3, title: 'Bike', subtitle: '22-02-23', src: image3 },
-  { id: 4, title: 'Road', subtitle: '01-06-20', src: image4 },
-  { id: 5, title: 'Tokyo', subtitle: '05-07-21', src: image5 },
-  { id: 6, title: 'Dog', subtitle: '05-09-18', src: image6 },
-];
-&nbsp;
-const Cards: FC&lt;IProps&gt; = (props) =&gt; {
-  const getCards = () =&gt; {
-    return CardsInfo.filter((item) =&gt; {
-      return item.title.toLowerCase().includes(props.searchValue.toLowerCase());
-    });
-  };
-  return &lt;CardsView getCards={getCards} /&gt;;
+const initialState: IState = {
+  cards: [],
+  popup: false,
 };
 &nbsp;
-export default Cards;
+export const formSlice = createSlice({
+  name: 'FormCards',
+  initialState,
+  reducers: {
+    setVisiblePopup(state, { payload }) {
+      state.popup = payload;
+    },
+    setUnvisiblePopup(state, { payload }) {
+      state.popup = payload;
+    },
+    addFormCard(state, { payload }) {
+      const values: IValues = {
+        id: uuid(),
+        checkbox: payload.checkbox,
+        city: payload.city,
+        date: payload.date,
+        file: payload.file,
+        firstName: payload.firstName,
+        radio: payload.radio,
+        secondName: payload.secondName,
+      };
+      state.cards.push(values);
+      localStorage.setItem('cards', JSON.stringify(state.cards));
+    },
+    getCardsFromLocalStorage(state) {
+      const initialCards = localStorage.getItem('cards');
+      if (initialCards) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >        state.cards = JSON.parse(initialCards);</span>
+<span class="cstat-no" title="statement not covered" >      }</span>
+    },
+  },
+}<span class="fstat-no" title="function not covered" >);</span>
+export const { setVisiblePopup, setUnvisiblePopup, addFormCard, getCardsFromLocalStorage } =
+  formSlice.actions;
+export default formSlice.reducer;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -184,16 +220,16 @@ export default Cards;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-02T18:04:05.610Z
+                at 2023-04-18T16:53:02.034Z
             </div>
-        <script src="../../../../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../sorter.js"></script>
-        <script src="../../../../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
