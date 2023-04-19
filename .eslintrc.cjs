@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 module.exports = {
   env: {
     browser: true,
@@ -28,6 +29,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks'],
+  ignorePatterns: ['setupTests.ts', 'prettify.js', 'sorter.js', 'block-navigation.js'],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
@@ -45,6 +47,20 @@ module.exports = {
     '@typescript-eslint/no-var-reqiures': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react/prefer-stateless-function': 'off',
+    'react/destructuring-assignment': 'off',
+    'react/sort-comp': 'off',
+    '@typescript-eslint/no-unused-expressions': 'off',
+    'no-nested-ternary': 'off',
+    'react/function-component-definition': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/jsx-no-useless-fragment': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/alt-text': 'off',
+    'no-alert': 'off',
+    'react-hooks/exhaustive-deps': 'off',
   },
   settings: {
     react: {

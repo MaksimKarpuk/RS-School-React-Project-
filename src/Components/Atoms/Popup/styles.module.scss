@@ -1,0 +1,26 @@
+@import '../../../index.scss';
+
+.popupVisible {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: gray;
+  opacity: 0.9;
+  height: 100%;
+  .popup__container {
+    background-color: $white;
+    max-width: fit-content;
+    position: relative;
+    margin: 0 auto;
+    top: 35%;
+    .container__info {
+      padding: 5rem;
+      @include H18;
+    }
+  }
+}
+.popupUnvisible {
+  display: none;
+}

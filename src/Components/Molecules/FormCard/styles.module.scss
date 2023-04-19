@@ -1,0 +1,24 @@
+@import '../../../index.scss';
+
+.form_card {
+  margin: 4rem 0;
+  .form_card__container {
+    @include container;
+    .container__card {
+      border: 0.0625rem solid $header;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5rem;
+      @include H18;
+      .card__image {
+        img {
+          width: 15rem;
+          height: 15rem;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}

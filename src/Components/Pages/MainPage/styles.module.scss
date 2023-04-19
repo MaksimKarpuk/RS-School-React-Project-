@@ -1,0 +1,15 @@
+@import '../../../index.scss';
+
+.main {
+  .main__loader {
+    position: absolute;
+    left: 40%;
+    top: 30%;
+  }
+  .main__empty {
+    position: absolute;
+    left: 45%;
+    top: 45%;
+    @include H32;
+  }
+}
